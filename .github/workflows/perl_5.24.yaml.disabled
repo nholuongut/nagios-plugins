@@ -1,0 +1,64 @@
+#
+#  Author: Nho Luong
+#  Date: 2020-04-07 12:57:04 +0100 (Tue, 07 Apr 2020)
+#
+#  vim:ts=2:sts=2:sw=2:et
+#
+#  nholuongut/nagios-pnholuongut/nagios-plugins
+#
+#  If you're using my code you're welcome to connect with me on LinkedIn and optionally send me feedback
+#
+#  https://www.linkedin.com/in/nholuong
+#
+
+---
+name: Perl 5.24
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - '**/*.pl'
+      - '**/*.pm'
+      - '**/*.t'
+      - lib
+      - 'setup/cpan-requirements*'
+      - .github/workflows/perl_5.24.yaml
+  pull_request:
+    branches:
+      - master
+      - main
+    paths:
+      - '**/*.pl'
+      - '**/*.pm'
+      - '**/*.t'
+      - lib
+      - 'setup/cpan-requirements*'
+      - .github/workflows/perl_5.24.yaml
+  workflow_dispatch:
+    inputs:
+      debug:
+        type: boolean
+        required: false
+        default: false
+  schedule:
+    - cron: '0 7 * * *'
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # github.event.repository context not available in scheduled workflows
+    #if: github.event.repository.fork == false
+    if: github.repository_owner == 'HariSekhon'
+    name: Perl
+    uses: HariSekhon/GitHub-Actions/.github/workflows/make.yaml@master
+    with:
+      container: perl:5.24
+      caches: apt cpan
+      build-targets: ci fatpacks
+      debug: ${{ github.event.inputs.debug }}

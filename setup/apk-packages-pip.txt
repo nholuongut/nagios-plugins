@@ -1,0 +1,21 @@
+#
+#  Author: Nho Luong
+#  Date: 2013-02-03 10:25:36 +0000 (Sun, 03 Feb 2013)
+#
+#  https://github.com/HariSekhon/DevOps-Python-tools
+#
+#  License: see accompanying LICENSE file
+#
+#  https://www.linkedin.com/in/nholuong
+#
+
+# ============================================================================ #
+#                          Alpine PIP Package Requirements
+# ============================================================================ #
+
+py-boto
+py-dnspython
+py-mysqldb
+py-py
+py3-jinja2
+py3-psycopg2

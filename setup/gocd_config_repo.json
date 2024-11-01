@@ -1,0 +1,26 @@
+{
+  "id": "Nagios-Plugins",
+  "plugin_id": "yaml.config.plugin",
+  "material": {
+    "type": "git",
+    "attributes": {
+  	"url": "nholuongut/nagios-pnholuongut/nagios-plugins
+  	"branch": "master",
+  	"auto_update": true
+    }
+  },
+  "configuration": [
+    {
+      "key": "file_pattern",
+      "value": "cicd/*.gocd.y*ml"
+    }
+  ],
+  "rules": [
+    {
+  	"directive": "allow",
+  	"action": "*",
+  	"type": "*",
+  	"resource": "*"
+    }
+  ]
+}
